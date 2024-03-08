@@ -1,31 +1,26 @@
 import * as readline from 'readline';
 
-// Exchange rates (as of March 2024)
 const exchangeRates: { [key: string]: number } = {
-    USD: 1,     // Base currency (US Dollar)
-    EUR: 0.89,  // Euro
-    GBP: 0.76,  // British Pound
-    JPY: 110.27 // Japanese Yen
+    USD: 1,    
+    EUR: 0.89,  
+    GBP: 0.76,  
+    JPY: 110.27
 };
 
-// Function to convert currency
 function convertCurrency(amount: number, fromCurrency: string, toCurrency: string): number {
     const amountInUSD = amount / exchangeRates[fromCurrency];
     return amountInUSD * exchangeRates[toCurrency];
 }
 
-// Function to display currency conversion result
 function displayResult(amount: number, fromCurrency: string, toCurrency: string, convertedAmount: number): void {
     console.log(`${amount} ${fromCurrency} is equal to ${convertedAmount.toFixed(2)} ${toCurrency}`);
 }
 
-// Create readline interface
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-// Main function
 function main(): void 
 {
     rl.question('Enter the amount of money: ', (amountInput: string) => 
@@ -49,6 +44,4 @@ function main(): void
         });
     });
 }
-
-// Call the main function
 main();
